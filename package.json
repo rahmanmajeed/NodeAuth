@@ -1,29 +1,37 @@
 {
-    "name": "nodeauth",
-    "version": "1.0.0",
-    "description": "simple authetication using node",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js",
-        "dev": "nodemon index.js",
-        "format:check": "prettier --check .",
-        "format:write": "prettier --write .",
-        "lint:check": "eslint .",
-        "lint:fix": "eslint --fix .",
-        "eslint:fix": "eslint --fix"
-    },
-    "keywords": [
-        "Node, Auth, JWT, MongoDB"
-    ],
-    "author": "Majeed",
-    "license": "MIT",
-    "dependencies": {
-        "bcryptjs": "^2.4.3",
-        "express": "^4.18.2",
-        "jsonwebtoken": "^8.5.1",
-        "mongoose": "^6.7.0",
-        "nodemon": "^2.0.20"
-    },
-    "devDependencies": {}
+  "name": "nodeauth",
+  "version": "1.0.0",
+  "description": "simple authetication using node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "pretify": "prettier --config .prettierrc --write .",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "eslint:fix": "eslint --fix"
+  },
+  "keywords": [
+    "Node, Auth, JWT, MongoDB"
+  ],
+  "author": "Majeed",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.0",
+    "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
+  }
 }

@@ -9,7 +9,9 @@ const port = 5000;
 // connection instance
 const { connectDB } = require('./db');
 
-const server = app.listen(port, () => console.log(`Server is running ${port} :port`));
+const server = app.listen(port, () =>
+  console.log(`Server is running ${port} :port`)
+);
 
 connectDB();
 
