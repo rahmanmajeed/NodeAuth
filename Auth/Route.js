@@ -2,9 +2,7 @@ const { json } = require('express');
 const express = require('express');
 
 const router = express.Router();
-const {
-  register, loginUser, update, deleteUser, test,
-} = require('./Auth');
+const { register, loginUser, update, deleteUser, test } = require('./Auth');
 
 router.route('/register').post(register);
 router.route('/login').post(loginUser);

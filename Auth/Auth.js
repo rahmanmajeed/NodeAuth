@@ -1,5 +1,9 @@
+/* eslint-disable no-underscore-dangle */
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const User = require('../Model/User');
+
+const jwtSecret = '4715aed3c946f7b0a38e6b534a9583628d84e96d10fbc04700770d572af3dce43625dd';
 
 exports.register = async (req, res, next) => {
   const { username, password } = req.body;
@@ -47,12 +51,26 @@ exports.loginUser = async (req, res, next) => {
     } else {
       // comparing given password with hashed password
       bcrypt.compare(password, user.password).then((result) => {
-        result
-          ? res.status(200).json({
-            message: 'Login successful',
-            user,
-          })
-          : res.status(400).json({ message: 'Login not succesful' });
+        if (result) {
+          const maxAge = 3 * 60 * 60;
+          const token = jwt.sign(
+            { id: user._id, username, role: user.role },
+            jwtSecret,
+            { expiresIn: maxAge },
+          );
+
+          res.cookie('jwt', token, {
+            httpOnly: true,
+            maxAge: maxAge * 1000, // 3hrs in ms
+          });
+          res.status(201).json({
+            message: 'User successfully Logged in',
+            user: user._id,
+            role: user.role,
+          });
+        } else {
+          res.status(400).json({ message: 'Login not succesful' });
+        }
       });
     }
   } catch (error) {
