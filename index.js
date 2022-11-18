@@ -7,6 +7,7 @@ const app = express();
 const { adminMiddleware, basicMiddleware } = require('./Middleware/auth');
 
 const port = 5000;
+// set frontend view enggine
 app.set('view engine', 'ejs');
 
 // connection instance
@@ -21,6 +22,9 @@ app.use(express.json());
 app.use(cookieparser());
 
 app.use('/api/auth', require('./Auth/Route'));
+
+// front-end routes
+app.get('/', (req, res) => res.render('home'));
 
 app.get('/admin', adminMiddleware, (req, res) => res.render('admin'));
 app.get('/basic', basicMiddleware, (req, res) => res.render('user'));
